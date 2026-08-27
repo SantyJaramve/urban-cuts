@@ -31,8 +31,14 @@ const PORT = process.env.PORT || 4000;
 // ============================================================
 
 // Habilitar CORS para permitir peticiones del frontend
+// CORS_ORIGIN puede ser una lista separada por comas (ej: local + produccion)
+const allowedOrigins = (process.env.CORS_ORIGIN || 'http://localhost:3000,http://localhost:3001')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || ['http://localhost:3000', 'http://localhost:3001'],
+  origin: allowedOrigins,
   credentials: true,
 }));
 
