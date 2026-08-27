@@ -7,9 +7,14 @@
 
 import axios from 'axios';
 
+// URL base del backend:
+// - En desarrollo usa el proxy de Vite (/api/v1)
+// - En produccion usa VITE_API_URL (variable de entorno)
+const baseURL = import.meta.env.VITE_API_URL || '/api/v1';
+
 // Crear instancia de Axios con URL base del backend
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },

@@ -1,0 +1,52 @@
+# ============================================================
+# ARCHIVO: render.yaml
+# RESPONSABILIDAD: Definir los servicios a desplegar en Render.
+# 1) backend: Web Service (Node/Express)
+# 2) frontend: Static Site (React build)
+# Las variables de entorno sensibles se configuran desde el
+# dashboard de Render, no en este archivo.
+# ============================================================
+
+services:
+  # ==================== BACKEND (API) ====================
+  - type: web
+    name: urban-cuts-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/v1/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_SCHEMA
+        sync: false
+      - key: DB_SSL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+
+  # ==================== FRONTEND (STATIC SITE) ====================
+  - type: static
+    name: urban-cuts-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false

@@ -1,0 +1,11 @@
+// ============================================================
+// ARCHIVO: vercel.json
+// RESPONSABILIDAD: Configuracion de despliegue del frontend
+// en Vercel. Reescribe todas las rutas al index.html para
+// soportar el routing SPA de React Router.
+// ============================================================
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
