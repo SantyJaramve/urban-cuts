@@ -21,23 +21,23 @@ services:
       - key: PORT
         value: 10000
       - key: DB_HOST
-        sync: false
+        value: aws-0-us-east-2.pooler.supabase.com
       - key: DB_PORT
-        sync: false
+        value: 5432
       - key: DB_NAME
-        sync: false
+        value: postgres
       - key: DB_USER
-        sync: false
+        value: postgres.zbpufanadbxtztwwzpfb
       - key: DB_PASSWORD
         sync: false
       - key: DB_SCHEMA
-        sync: false
+        value: barberia
       - key: DB_SSL
-        sync: false
+        value: "true"
       - key: JWT_SECRET
         sync: false
       - key: JWT_EXPIRES_IN
-        sync: false
+        value: 24h
       - key: CORS_ORIGIN
         sync: false
 
