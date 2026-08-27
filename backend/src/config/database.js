@@ -17,6 +17,10 @@ const pool = new Pool({
   user:     process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   max:      20,
+  connectionTimeoutMillis: 15000,
+  keepAlive: true,
+  // Forzar IPv4 para evitar errores ENETUNREACH con IPv6 en la nube
+  family: 4,
   ssl: process.env.DB_SSL === 'true'
     ? { rejectUnauthorized: false }
     : false,
