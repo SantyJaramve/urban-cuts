@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ARCHIVO: index.css
+   RESPONSABILIDAD: Estilos globales base del sistema.
+   Configura transiciones de tema y estilos base de body.
+   ============================================================ */
+
+/* Fuente ADega Serif */
+@font-face {
+  font-family: 'ADega Serif';
+  src: url('/fonts/ADega Serif Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ADega Serif';
+  src: url('/fonts/ADega Serif Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ADega Serif';
+  src: url('/fonts/ADega Serif italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ADega Serif';
+  src: url('/fonts/ADega Serif Bold Italic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Aplicar ADega Serif a todos los textos que no sean parrafos */
+h1, h2, h3, h4, h5, h6, span, label, a, li, th, td, dt, dd, figcaption, blockquote, cite, strong, em, b, i, small, mark {
+  font-family: 'ADega Serif', serif;
+}
+
+p, input, textarea, select {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Transicion deshabilitada globalmente - usar clases individuales */
+
+/* Scrollbar personalizada para modo oscuro */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A2E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3A3A5C;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00F0FF;
+}
+
+/* Skeleton loader animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #232340 25%, #3A3A5C 50%, #232340 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #E0E0E6 25%, #F4F4F9 50%, #E0E0E6 75%);
+  background-size: 200% 100%;
+}
+
+/* Glow effect para inputs focus */
+input:focus, select:focus, textarea:focus {
+  box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.3);
+}

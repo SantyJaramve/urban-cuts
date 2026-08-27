@@ -1,0 +1,236 @@
+/* ============================================================
+   ARCHIVO: carousel.css
+   RESPONSABILIDAD: Estilos del carrusel 3D de servicios para
+   la pagina Home. Carousel con perspective 3D controlado por
+   React state. Tarjetas apiladas con efecto profundo,
+   navegacion con flechas, todas al derecho.
+   ============================================================ */
+
+/* === CONTENEDOR PRINCIPAL === */
+.carousel-3d {
+  position: relative;
+  width: 350px;
+  height: 420px;
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+/* === TARJETA === */
+.carousel-3d-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #DC143C;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.6s ease;
+  cursor: default;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+/* Imagen de fondo de la tarjeta */
+.carousel-3d-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Overlay oscuro sobre la imagen */
+.carousel-3d-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+
+/* Contenido encima del overlay */
+.carousel-3d-number,
+.carousel-3d-price,
+.carousel-3d-line,
+.carousel-3d-title,
+.carousel-3d-desc {
+  position: relative;
+  z-index: 2;
+}
+
+/* Colores alternos - fallback sin imagen */
+.carousel-3d-card:nth-child(6n+1) { background: #DC143C; }
+.carousel-3d-card:nth-child(6n+2) { background: #DC143C; }
+.carousel-3d-card:nth-child(6n+3) { background: #DC143C; }
+.carousel-3d-card:nth-child(6n+4) { background: #DC143C; }
+.carousel-3d-card:nth-child(6n+5) { background: #DC143C; }
+.carousel-3d-card:nth-child(6n+6) { background: #DC143C; }
+
+/* Estado activo: enfrente */
+.carousel-3d-card.active {
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+  z-index: 5;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Estado inmediatamente detras */
+.carousel-3d-card.behind-1 {
+  transform: translateZ(-80px) scale(0.9) translateY(10px);
+  opacity: 0.7;
+  z-index: 4;
+}
+
+/* Dos atras */
+.carousel-3d-card.behind-2 {
+  transform: translateZ(-160px) scale(0.8) translateY(20px);
+  opacity: 0.4;
+  z-index: 3;
+}
+
+/* Tres o mas atras */
+.carousel-3d-card.behind-3 {
+  transform: translateZ(-240px) scale(0.7) translateY(30px);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Delante (circular) */
+.carousel-3d-card.ahead-1 {
+  transform: translateZ(-80px) scale(0.9) translateY(10px);
+  opacity: 0.7;
+  z-index: 4;
+}
+
+.carousel-3d-card.ahead-2 {
+  transform: translateZ(-160px) scale(0.8) translateY(20px);
+  opacity: 0.4;
+  z-index: 3;
+}
+
+.carousel-3d-card.ahead-3 {
+  transform: translateZ(-240px) scale(0.7) translateY(30px);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* === CONTENIDO DE LA TARJETA === */
+.carousel-3d-number {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: bold;
+  color: #fff;
+  opacity: 0.15;
+  line-height: 1;
+}
+
+.carousel-3d-price {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #DC143C;
+  color: #fff;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.carousel-3d-line {
+  width: 40px;
+  height: 2px;
+  background: #DC143C;
+  margin-bottom: 12px;
+  margin-left: 28px;
+  margin-bottom: 12px;
+}
+
+.carousel-3d-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  padding: 0 28px;
+  margin-bottom: 8px;
+}
+
+.carousel-3d-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  padding: 0 28px 32px 28px;
+}
+
+/* === FLECHAS DE NAVEGACION === */
+.carousel-3d-nav {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.carousel-3d-btn {
+  width: 44px;
+  height: 44px;
+  background: #1C1C1E;
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  color: #DC143C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.carousel-3d-btn:hover {
+  background: #DC143C;
+  color: #0D0D0D;
+  border-color: #DC143C;
+}
+
+.carousel-3d-counter {
+  display: flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #F5F0E8;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 1024px) {
+  .carousel-3d {
+    width: 300px;
+    height: 380px;
+  }
+  .carousel-3d-title { font-size: 22px; }
+  .carousel-3d-number { font-size: 44px; }
+}
+
+@media (max-width: 640px) {
+  .carousel-3d {
+    width: 280px;
+    height: 360px;
+  }
+}

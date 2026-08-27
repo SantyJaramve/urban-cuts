@@ -1,0 +1,57 @@
+# ROL Y EXPERIENCIA
+Actúa como un Desarrollador Full Stack Senior con 20 años de experiencia y Especialista en UI/UX. Tu objetivo es entregar una solución de software de nivel producción, funcional, escalable, con código extremadamente limpio, moderno y comentado paso a paso.
+
+# OBJETIVO DEL PROYECTO
+Diseñar y desarrollar la arquitectura web completa (Frontend, Backend, Base de Datos) para un sistema premium de gestión de citas de una barbería de estilo urbano/moderno ubicada en Medellín.
+
+# AUDIENCIA TÉCNICA
+El código debe estar estructurado como un proyecto integrador académico y profesional para un estudiante de 9no semestre de Ingeniería de Sistemas. Cada archivo debe incluir comentarios explícitos explicando la responsabilidad del componente, capa o módulo.
+
+# STACK TECNOLÓGICO OBLIGATORIO
+- **Frontend:** React.js (SPA o Next.js App Router), Tailwind CSS o CSS Modules para estilos.
+- **Backend:** Node.js con Express.js (Arquitectura por capas: Controllers, Services, Routes, Middlewares).
+- **Base de Datos:** PostgreSQL (Relacional puro con scripts DDL de tablas, claves foráneas e índices).
+- **Control de Estado y AJAX:** Axios / React Query o Native Fetch para peticiones API REST.
+
+# DISEÑO UI/UX Y SISTEMA DE TEMAS (NO GENÉRICO)
+- **Modo Oscuro (Predeterminado):** Basado en tono negro profundo (#0D0D0D) o gris carbón con acentos vibrantes de estilo neón (Cian `#00F0FF` y Naranja Neón `#FF5500`) para reflejar la vibra urbana y moderna de Medellín.
+- **Modo Claro:** Transición suave a tonos gris claro premium (#F4F4F9) manteniendo los acentos neón contrastados.
+- **Componentes de Interfaz:** Interfaz responsive (Mobile-first), microinteracciones al pasar el cursor (hover), alertas tipo Toast para operaciones exitosas o errores, modal de confirmación antes de eliminar o cancelar citas, y estados de carga (Skeleton loaders).
+
+# ROLES DE USUARIO Y FUNCIONALIDAD COMPLETA (CRUD)
+
+1. **Cliente:**
+   - Visualizar catálogo de servicios y cortes en tendencia en Medellín (Ej: Fade, Taper, Mullet moderno, Perfilado de barba).
+   - Formulario de reserva con validaciones en tiempo real: Selección de servicio, barbero, fecha/hora (bloqueando horarios ya ocupados).
+   - Consulta y cancelación de su propia cita mediante código único de reserva o login.
+
+2. **Barbero:**
+   - Vista de agenda personal diaria/semanal.
+   - Cambio de estado de la cita (Pendiente, Completada, Cancelada).
+
+3. **Administrador:**
+   - Dashboard global de métricas (Citas totales del día, ingresos estimados, servicios más demandados).
+   - **CRUD Completo:** Crear, consultar, actualizar y eliminar servicios y perfiles de barberos.
+   - Configuración de horarios de atención de la barbería.
+
+# REQUERIMIENTOS TÉCNICOS DE CÓDIGO Y ESTRUCTURA
+
+1. **Base de Datos (PostgreSQL):**
+   - Entregar scripts `.sql` limpios para la creación del esquema: `usuarios`, `roles`, `barberos`, `servicios`, `citas` y `horarios`.
+   - Incluir restricciones de integridad (Foreign Keys, NOT NULL, UNIQUE para evitar empalme de citas a la misma hora).
+
+2. **Backend (Node.js/Express):**
+   - Manejo centralizado de errores con respuestas JSON estructuradas (`{ success: false, message: "..." }`).
+   - Validaciones de entrada en APIs (evitar fechas pasadas, formato de teléfono/correo).
+   - Configuración de variables de entorno (`.env`) y manejo de CORS.
+
+3. **Frontend (React):**
+   - Estructura modular de carpetas (`/components`, `/pages`, `/services`, `/context`, `/hooks`).
+   - Implementar `ThemeContext` para la conmutación global de tema Claro/Oscuro.
+   - Componentes reutilizables: Tablas con filtros de búsqueda, Formularios validados, Cards de servicios y Modales.
+
+# ENTREGABLE ESPERADO
+Genera el código modular completo paso a paso:
+1. Esquema de Base de Datos en SQL (`schema.sql`).
+2. Rutas y Controladores principales del API en Express.
+3. Componente de Frontend en React para la reserva de citas y el dashboard con el toggle de Modo Claro/Oscuro.
