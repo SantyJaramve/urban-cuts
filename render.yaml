@@ -2,7 +2,8 @@
 # ARCHIVO: render.yaml
 # RESPONSABILIDAD: Definir los servicios a desplegar en Render.
 # 1) backend: Web Service (Node/Express)
-# 2) frontend: Static Site (React build)
+# (El frontend se crea manualmente como Static Site, ya que
+#  Render Blueprint no soporta el tipo "static")
 # Las variables de entorno sensibles se configuran desde el
 # dashboard de Render, no en este archivo.
 # ============================================================
@@ -39,14 +40,4 @@ services:
       - key: JWT_EXPIRES_IN
         value: 24h
       - key: CORS_ORIGIN
-        sync: false
-
-  # ==================== FRONTEND (STATIC SITE) ====================
-  - type: static
-    name: urban-cuts-frontend
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    publishPath: dist
-    envVars:
-      - key: VITE_API_URL
         sync: false
