@@ -187,7 +187,6 @@ const Register = () => {
               type="tel"
               name="telefono"
               placeholder="300 123 4567"
-              optional
               value={formData.telefono}
               errors={errors}
               onChange={handleChange}
